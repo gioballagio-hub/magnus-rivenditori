@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 type FormState = {
@@ -67,11 +66,33 @@ const ContactForm: React.FC = () => {
         if (!validate()) return;
         
         setStatus('loading');
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // On success
-        setStatus('success');
+        try {
+            // ===================================================================
+            // CONFIGURAZIONE FORM: INCOLLA QUI IL TUO URL DI FORMSPREE
+            // 1. Crea un account su formspree.io
+            // 2. Crea un nuovo form che invia a "info@magnus-store.it"
+            // 3. Copia l'endpoint URL (es. https://formspree.io/f/xxxxxxxx)
+            // 4. Incollalo qui sotto al posto di "YOUR_FORM_ID"
+            // ===================================================================
+            const response = await fetch("https://formspree.io/f/xnjbpyve", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error("Errore durante l'invio del form:", error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -92,7 +113,15 @@ const ContactForm: React.FC = () => {
                             <h3 className="font-heading text-3xl text-white">Grazie!</h3>
                             <p className="mt-4 text-lg text-[#8A8A8A]">La tua richiesta è stata inviata con successo. Il nostro team ti contatterà al più presto.</p>
                         </div>
-                    ) : (
+                    ) : status === 'error' ? (
+                        <div className="fade-up text-center bg-[#1A1A1A] border-2 border-yellow-500 p-12 rounded-lg">
+                            <h3 className="font-heading text-3xl text-white">Oops! Qualcosa è andato storto.</h3>
+                            <p className="mt-4 text-lg text-[#8A8A8A]">Non è stato possibile inviare la tua richiesta. Riprova più tardi o contattaci direttamente.</p>
+                             <button onClick={() => setStatus('idle')} className="mt-6 clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-3 px-8 text-md transition-all duration-300">
+                                Riprova
+                            </button>
+                        </div>
+                     ) : (
                     <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
                         {/* Form Fields */}
                         <div className="fade-up lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" style={{transitionDelay: '300ms'}}>
@@ -172,4 +201,3 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
-    

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BenefitIcons } from './icons/BenefitIcons';
 
@@ -8,10 +7,10 @@ const ValueProposition: React.FC = () => {
         { icon: 'boxOpen', title: "Logistica Semplificata", description: "Zero burocrazia. Tutta la merce è già sdoganata e pronta per la spedizione immediata dal nostro magazzino." },
         { icon: 'tag', title: "Prezzi Trasparenti", description: "Il nostro listino B2B è chiaro e competitivo, senza costi nascosti. Massima trasparenza per i tuoi margini." },
         { icon: 'shield', title: "Garanzia e Qualità", description: "Prodotti originali e certificati, coperti da garanzia e da una procedura di reso semplice e veloce, gestita in Italia." },
-        { icon: 'users', title: "Team di Esperti Dedicato", description: "Hai a disposizione un team di specialisti per consulenza tecnica su misura e supporto commerciale continuo." },
-        { icon: 'warehouse', title: "Magazzino Italia, Spedizioni Veloci", description: "Con il nostro stock fisico a Cittadella (PD), garantiamo spedizioni in 24-48h in tutta Italia ed Europa." },
+        { icon: 'wrench', title: "Team di Esperti Dedicato", description: "Hai a disposizione un team di specialisti per consulenza tecnica su misura e supporto commerciale continuo." },
+        { icon: 'truck', title: "Magazzino Italia, Spedizioni Veloci", description: "Con il nostro stock fisico a Cittadella (PD), garantiamo spedizioni in 24-48h in tutta Italia ed Europa." },
         { icon: 'chart', title: "Aggiornamenti sui Trend", description: "Ti teniamo costantemente aggiornato sulle novità e le tendenze del mercato americano per darti un vantaggio competitivo." },
-        { icon: 'handshake', title: "Rapporto Personale e Diretto", description: "Non siamo solo una voce al telefono. Ci incontri di persona a fiere ed eventi di settore per costruire una vera partnership." },
+        { icon: 'users', title: "Rapporto Personale e Diretto", description: "Non siamo solo una voce al telefono. Ci incontri di persona a fiere ed eventi di settore per costruire una vera partnership." },
         { icon: 'calendar', title: "Esperienza Pluriennale", description: "Mettiamo a tua disposizione la nostra esperienza pluriennale nel settore automotive americano per aiutarti a crescere." }
     ];
 
@@ -49,4 +48,3 @@ const ValueProposition: React.FC = () => {
 };
 
 export default ValueProposition;
-    

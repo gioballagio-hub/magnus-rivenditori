@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MagnusLogo } from './icons/MagnusLogo';
 
@@ -26,7 +25,7 @@ const Footer: React.FC = () => {
                         <ul className="mt-4 space-y-2">
                             <li><a href="#" className="hover:text-white transition-colors">Chi Siamo</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Categorie Prodotto</a></li>
-                            <li><a href="#contact-form" className="hover:text-white transition-colors">Portale B2B</a></li>
+                            <li><a href="https://b2b.magnus-store.it/login" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Portale B2B</a></li>
                             <li><a href="#contact-form" className="hover:text-white transition-colors">Contatti</a></li>
                         </ul>
                     </div>
@@ -51,4 +50,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-    

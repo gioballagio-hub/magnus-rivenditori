@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedCounter from './AnimatedCounter';
 
@@ -17,17 +16,13 @@ const Hero: React.FC = () => {
                             Elimina i tempi di attesa, le complessità doganali e l'incertezza. Forniamo a officine e rivenditori ricambi, AMSOIL e accessori premium con spedizioni rapide da magazzino italiano.
                         </p>
                         <div className="fade-up mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" style={{ transitionDelay: '800ms' }}>
-                            <a href="#contact-form" className="clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-4 px-10 text-lg transition-all duration-300 transform hover:scale-105">
+                            <a href="https://b2b.magnus-store.it/login" target="_blank" rel="noopener noreferrer" className="clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-4 px-10 text-lg transition-all duration-300 transform hover:scale-105">
                                 ACCEDI AL PORTALE B2B →
                             </a>
                             <a href="#pain-recognition" className="text-[#8A8A8A] hover:text-white font-semibold transition-colors flex items-center gap-2 group">
                                 Scopri perché 74 rivenditori scelgono Magnus <span className="transition-transform group-hover:translate-y-1">↓</span>
                             </a>
                         </div>
-                    </div>
-                    <div className="hidden lg:col-span-2 lg:flex justify-center items-center relative h-full">
-                        <div className="absolute w-[600px] h-[600px] bg-repeat" style={{ backgroundImage: "repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(204,0,0,0.2) 20px, rgba(204,0,0,0.2) 40px)"}}></div>
-                        <div className="w-[350px] h-[160px] bg-[#111111] relative" style={{clipPath: 'polygon(10% 0, 100% 0, 100% 70%, 95% 100%, 25% 100%, 0 45%)'}}></div>
                     </div>
                 </div>
             </div>
@@ -54,4 +49,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-    

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it" style="scroll-behavior: smooth;">
   <head>
@@ -56,7 +55,13 @@
       }
 
       .animate-marquee {
-        animation: marquee 40s linear infinite;
+        animation: marquee 30s linear infinite;
+      }
+
+      @media (max-width: 768px) {
+        .animate-marquee {
+          animation-duration: 20s;
+        }
       }
 
       .form-checkbox:checked {
@@ -81,4 +86,3 @@
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
-    
