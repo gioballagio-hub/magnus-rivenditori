@@ -10,7 +10,7 @@ const ProductCategories: React.FC = () => {
         { name: "Vernici", items: ["Automotive", "Industriale", "Nautica", "Casa"] }
     ];
 
-    const brands = [ "AMSOIL", "MOPAR", "ACDelco", "Motorcraft", "BDS Suspension", "Bilstein", "Fox Racing", "KMC Wheels", "Fuel Off-Road", "Borla", "Go Rhino", "Bushwacker", "Raptor", "AMP Research", "Falcon Shocks", "Black Rhino", "Rotiform", "Retrax", "PSC", "XD Wheels"];
+    const brands = [ "AMSOIL", "MOPAR", "ACDelco", "Motorcraft", "BDS Suspension", "Bilstein", "Fox Racing", "KMC Wheels", "Fuel Off-Road", "Borla", "Go Rhino", "Bushwacker", "Raptor", "AMP Research", "Falcon Shocks", "Black Rhino", "Rotiform", "Retrax", "PSC", "XD Wheels", "Magnaflow", "Zone Offroad", "TeraFlex", "AEV", "Warn", "Superchips", "DiabloSport", "BAKFlip" ];
     const doubledBrands = [...brands, ...brands];
 
     return (
@@ -53,4 +53,3 @@ const ProductCategories: React.FC = () => {
 };
 
 export default ProductCategories;
-    

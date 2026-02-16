@@ -27,7 +27,7 @@ const ShieldIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 const WrenchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.73-.626 1.182-.732l3.566-.713a2.652 2.652 0 00-2.652-2.652l-.713 3.566c-.106.453-.348.865-.732 1.182l-3.03 2.496m-2.296-4.573l-3.03 2.496c-.384.317-.626.73-.732 1.182l-.713 3.566a2.652 2.652 0 002.652 2.652l3.566-.713c.453-.106.865-.348 1.182-.732l2.496-3.03" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />
   </svg>
 );
 
@@ -43,15 +43,19 @@ const ChartIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-const TruckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V14.25m-17.25 4.5v-1.875a3.375 3.375 0 013.375-3.375h1.5a1.125 1.125 0 011.125 1.125v-1.5c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375v1.875" />
-  </svg>
+const TruckIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <img
+    src="https://media-public.canva.com/ue6m8/MAFAdrue6m8/1/t.png"
+    alt="Spedizioni veloci"
+    className={className}
+    style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7423%) hue-rotate(1deg) brightness(100%) contrast(115%)' }}
+    draggable={false}
+  />
 );
 
-const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const MedalIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
   </svg>
 );
 
@@ -63,6 +67,6 @@ export const BenefitIcons = {
     wrench: WrenchIcon,
     users: UsersIcon,
     chart: ChartIcon,
-    calendar: CalendarIcon,
     truck: TruckIcon,
+    calendar: MedalIcon,
 };

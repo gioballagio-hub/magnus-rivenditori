@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CarIcons } from './icons/CarIcons';
 
@@ -21,12 +20,12 @@ const MarketSegments: React.FC = () => {
                     </h2>
                 </div>
                 <div className="fade-up mt-16">
-                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
                         {segments.map((segment, index) => {
                             const Icon = CarIcons[segment.icon as keyof typeof CarIcons];
                             return (
                                 <div key={index} className="group bg-[#111111] border-2 border-[#2A2A2A] rounded-lg p-6 text-center transition-all duration-300 hover:border-[#CC0000] hover:bg-[rgba(204,0,0,0.1)] hover:-translate-y-2">
-                                    <Icon className="w-16 h-16 mx-auto text-[#CC0000] transition-transform duration-300 group-hover:scale-110" />
+                                    <Icon className="w-full h-12 mx-auto object-contain transition-transform duration-300 group-hover:scale-110" />
                                     <h3 className="mt-4 font-heading font-semibold text-xl text-white">{segment.name}</h3>
                                     <p className="mt-1 text-sm text-[#8A8A8A] h-12">{segment.models}</p>
                                 </div>
@@ -49,4 +48,3 @@ const MarketSegments: React.FC = () => {
 };
 
 export default MarketSegments;
-    

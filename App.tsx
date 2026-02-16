@@ -1,10 +1,10 @@
-
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import StickyNav from './components/StickyNav';
 import Hero from './components/Hero';
 import PainRecognition from './components/PainRecognition';
 import ValueProposition from './components/ValueProposition';
 import MarketSegments from './components/MarketSegments';
+import BrandLogos from './components/BrandLogos';
 import ProductCategories from './components/ProductCategories';
 import SocialProof from './components/SocialProof';
 import HowItWorks from './components/HowItWorks';
@@ -25,23 +25,19 @@ const App: React.FC = () => {
                     }
                 });
             },
-            {
-                threshold: 0.15,
-            }
+            { threshold: 0.15 }
         );
 
         sectionsRef.current.forEach((section) => {
             if (section) {
-                const elements = section.querySelectorAll('.fade-up');
-                elements.forEach(el => observer.observe(el));
+                section.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
             }
         });
-        
+
         return () => {
-             sectionsRef.current.forEach((section) => {
+            sectionsRef.current.forEach((section) => {
                 if (section) {
-                    const elements = section.querySelectorAll('.fade-up');
-                    elements.forEach(el => observer.unobserve(el));
+                    section.querySelectorAll('.fade-up').forEach(el => observer.unobserve(el));
                 }
             });
         };
@@ -62,6 +58,7 @@ const App: React.FC = () => {
                 <div ref={addToRefs}><PainRecognition /></div>
                 <div ref={addToRefs}><ValueProposition /></div>
                 <div ref={addToRefs}><MarketSegments /></div>
+                <div ref={addToRefs}><BrandLogos /></div>
                 <div ref={addToRefs}><ProductCategories /></div>
                 <div ref={addToRefs}><SocialProof /></div>
                 <div ref={addToRefs}><HowItWorks /></div>
@@ -74,4 +71,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-    

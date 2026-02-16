@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 type FormState = {
     name: string;
@@ -68,13 +68,6 @@ const ContactForm: React.FC = () => {
         setStatus('loading');
         
         try {
-            // ===================================================================
-            // CONFIGURAZIONE FORM: INCOLLA QUI IL TUO URL DI FORMSPREE
-            // 1. Crea un account su formspree.io
-            // 2. Crea un nuovo form che invia a "info@magnus-store.it"
-            // 3. Copia l'endpoint URL (es. https://formspree.io/f/xxxxxxxx)
-            // 4. Incollalo qui sotto al posto di "YOUR_FORM_ID"
-            // ===================================================================
             const response = await fetch("https://formspree.io/f/mreapvyj", {
                 method: 'POST',
                 headers: {
