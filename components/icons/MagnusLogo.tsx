@@ -7,10 +7,10 @@ interface MagnusLogoProps {
 
 export const MagnusLogo: React.FC<MagnusLogoProps> = ({ className, style }) => (
   <img
-    src="/magnus-logo.jpg"
+    src="/magnus-logo.png"
     alt="MAGNUS Logo"
     className={className}
-    style={{ mixBlendMode: 'screen', ...style }}
+    style={style}
     draggable={false}
   />
 );

@@ -17,7 +17,7 @@ const StickyNav: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     <a href="#" className="flex items-center">
-                        <MagnusLogo className="h-8 w-auto" />
+                        <MagnusLogo className="h-12 w-auto" />
                     </a>
                     <div className="flex items-center gap-6">
                         <a href="tel:0496711028" className="text-sm font-semibold text-[#8A8A8A] hover:text-white transition-colors hidden md:block">
