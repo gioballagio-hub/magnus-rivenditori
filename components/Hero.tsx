@@ -3,7 +3,7 @@ import AnimatedCounter from './AnimatedCounter';
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative min-h-screen flex items-center bg-[#111111] section-dots overflow-hidden">
+        <section className="relative bg-[#111111] section-dots overflow-hidden pt-28 pb-16 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <div className="grid lg:grid-cols-5 gap-8 items-center">
                     <div className="lg:col-span-3 text-center lg:text-left">
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 z-20 bg-[#1A1A1A] py-6 border-t-2 border-[#2A2A2A]">
+            <div className="w-full mt-20 bg-[#1A1A1A] py-6 border-t-2 border-[#2A2A2A] z-20 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:mt-0">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                         <div className="fade-up" style={{ transitionDelay: '1000ms' }}>
