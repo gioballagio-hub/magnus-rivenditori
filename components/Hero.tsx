@@ -16,8 +16,8 @@ const Hero: React.FC = () => {
                             Elimina i tempi di attesa, le complessità doganali e l'incertezza. Forniamo a officine e rivenditori ricambi, AMSOIL e accessori premium con spedizioni rapide da magazzino italiano.
                         </p>
                         <div className="fade-up mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" style={{ transitionDelay: '800ms' }}>
-                            <a href="https://b2b.magnus-store.it/login" target="_blank" rel="noopener noreferrer" className="clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-4 px-10 text-lg transition-all duration-300 transform hover:scale-105">
-                                ACCEDI AL PORTALE B2B →
+                            <a href="#contact-form" className="clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-4 px-10 text-lg transition-all duration-300 transform hover:scale-105">
+                                DIVENTA RIVENDITORE →
                             </a>
                             <a href="#pain-recognition" className="text-[#8A8A8A] hover:text-white font-semibold transition-colors flex items-center gap-2 group">
                                 Scopri perché 74 rivenditori scelgono Magnus <span className="transition-transform group-hover:translate-y-1">↓</span>
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
                             <p className="text-sm text-[#8A8A8A] uppercase tracking-wider">Referenze a Catalogo</p>
                         </div>
                         <div className="fade-up" style={{ transitionDelay: '1200ms' }}>
-                            <h3 className="text-3xl font-bold font-display text-[#CC0000]"><AnimatedCounter target={20} />+</h3>
+                            <h3 className="text-3xl font-bold font-display text-[#CC0000]"><AnimatedCounter target={30} />+</h3>
                             <p className="text-sm text-[#8A8A8A] uppercase tracking-wider">Brand USA Premium</p>
                         </div>
                     </div>
