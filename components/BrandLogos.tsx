@@ -7,59 +7,6 @@ interface Brand {
 }
 
 const brands: Brand[] = [
-  // ── File locali /public/brands/ ──────────────────────────────────────────────
-  {
-    name: 'Asanti',
-    src: '/brands/asanti.jpg',
-    filter: 'invert(1) brightness(0.9)',
-  },
-  {
-    name: 'Borla Exhaust',
-    src: '/brands/borla.jpg',
-    filter: 'brightness(1.05)',
-  },
-  {
-    name: 'Fox Racing Shox',
-    src: '/brands/fox.png',
-    filter: 'invert(1) brightness(0.9)',
-  },
-  {
-    name: 'JKS Manufacturing',
-    src: '/brands/jks.png',
-    filter: 'brightness(1.1)',
-  },
-  {
-    name: 'Morimoto',
-    src: '/brands/morimoto.jpg',
-    filter: 'invert(1) brightness(0.9)',
-  },
-  {
-    name: 'Retrax',
-    src: '/brands/retrax.jpg',
-    filter: 'brightness(1.05)',
-  },
-  {
-    name: 'Roll-N-Lock',
-    src: '/brands/rollnlock.jpg',
-    filter: 'brightness(1.1)',
-  },
-  {
-    name: 'Teraflex',
-    src: '/brands/teraflex.png',
-    filter: 'brightness(1.05)',
-  },
-  {
-    name: 'Wilwood',
-    src: '/brands/wilwood.jpg',
-    filter: 'brightness(1.05)',
-  },
-  {
-    name: 'Zone Offroad',
-    src: '/brands/zone-offroad.png',
-    filter: 'brightness(1.05)',
-  },
-
-  // ── Canva CDN ─────────────────────────────────────────────────────────────────
   {
     name: 'MOPAR',
     src: 'https://media.canva.com/v2/image-resize/format:PNG/height:185/quality:100/uri:ifs%3A%2F%2FM%2Fd3b3fffc-7e99-4e55-8b72-cdde04e0f4e1/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAADymtJsnpgXX12abyiii76Oa1FDD1RTqR-JlO5W7NOFd&exp=1771263750&osig=AAAAAAAAAAAAAAAAAAAAANlQlM6YgX2hYbWclg3yvsuwUwgaOoif1ekCErOP9CbZ&signer=media-rpc&x-canva-quality=thumbnail',
@@ -117,14 +64,13 @@ const brands: Brand[] = [
   },
 ];
 
-const marqueeItems = [...brands, ...brands];
-const marqueeReversed = [...brands].reverse();
-const marqueeReversedDoubled = [...marqueeReversed, ...marqueeReversed];
+// Triplica per evitare salti visivi con pochi elementi
+const marqueeItems = [...brands, ...brands, ...brands];
 
 const BrandCard: React.FC<{ brand: Brand; id: string }> = ({ brand, id }) => (
   <div
     key={id}
-    className="flex-shrink-0 flex items-center justify-center rounded-lg border border-[#2A2A2A] px-5 py-3 h-16 w-40 hover:border-[#CC0000] transition-colors duration-300 bg-[#1A1A1A]"
+    className="flex-shrink-0 flex items-center justify-center rounded-lg border border-[#2A2A2A] px-6 py-3 h-16 w-44 hover:border-[#CC0000] transition-colors duration-300 bg-[#1A1A1A]"
   >
     <img
       src={brand.src}
@@ -140,27 +86,25 @@ const BrandCard: React.FC<{ brand: Brand; id: string }> = ({ brand, id }) => (
 const BrandLogos: React.FC = () => {
   return (
     <section className="py-16 sm:py-20 bg-[#111111] border-y border-[#2A2A2A] overflow-hidden">
-
-      {/* Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
         <p className="fade-up text-xs font-heading font-semibold tracking-[0.3em] text-[#CC0000] uppercase mb-3">
           Importatore Ufficiale
         </p>
         <h2 className="fade-up font-display font-bold text-3xl sm:text-4xl uppercase tracking-wider text-white">
-          20+ Brand USA <span className="text-[#CC0000]">Premium</span>
+          Brand USA <span className="text-[#CC0000]">Principali</span>
         </h2>
         <p className="fade-up mt-3 text-[#8A8A8A] text-base max-w-xl mx-auto" style={{ transitionDelay: '150ms' }}>
           Accedi direttamente al catalogo dei marchi americani più richiesti, senza intermediari.
         </p>
       </div>
 
-      {/* Row 1 — scorre a sinistra */}
-      <div className="relative mb-4">
+      {/* Unica riga — scorre a sinistra, fluida e lenta */}
+      <div className="relative">
         <div
           className="flex gap-4"
           style={{
             width: 'max-content',
-            animation: 'brand-marquee-left 50s linear infinite',
+            animation: 'brand-marquee-left 80s linear infinite',
           }}
         >
           {marqueeItems.map((brand, index) => (
@@ -168,22 +112,6 @@ const BrandLogos: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Row 2 — scorre a destra */}
-      <div className="relative">
-        <div
-          className="flex gap-4"
-          style={{
-            width: 'max-content',
-            animation: 'brand-marquee-right 60s linear infinite',
-          }}
-        >
-          {marqueeReversedDoubled.map((brand, index) => (
-            <BrandCard key={`r2-${index}`} brand={brand} id={`r2-${index}`} />
-          ))}
-        </div>
-      </div>
-
     </section>
   );
 };

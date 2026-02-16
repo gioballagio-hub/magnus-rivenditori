@@ -38,16 +38,6 @@ const ProductCategories: React.FC = () => {
                     ))}
                 </div>
             </div>
-
-            <div className="fade-up mt-24 relative w-full h-24 bg-[#1A1A1A] flex items-center" style={{ transitionDelay: '500ms' }}>
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full flex whitespace-nowrap animate-marquee">
-                        {doubledBrands.map((brand, index) => (
-                            <span key={index} className="mx-8 text-xl font-semibold text-[#8A8A8A]">{brand}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
         </section>
     );
 };
