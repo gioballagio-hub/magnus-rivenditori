@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
             // 3. Copia l'endpoint URL (es. https://formspree.io/f/xxxxxxxx)
             // 4. Incollalo qui sotto al posto di "YOUR_FORM_ID"
             // ===================================================================
-            const response = await fetch("https://formspree.io/f/xnjbpyve", {
+            const response = await fetch("https://formspree.io/f/mreapvyj", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
