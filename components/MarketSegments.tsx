@@ -34,26 +34,24 @@ const MarketSegments: React.FC = () => {
                     </div>
                 </div>
 
-            
-                
-        <div className="fade-up mt-20 bg-[#111111] border-2 border-dashed border-[#CC0000] p-10 rounded-lg text-center" style={{ transitionDelay: '500ms'}}>
-    <div className="flex flex-col items-center gap-5">
-        <img
-            src="QUI_INCOLLA_URL_LOGO_AMSOIL_DA_CANVA"
-            alt="AMSOIL"
-            className="h-16 sm:h-20 w-auto object-contain"
-            draggable={false}
-        />
-        <div className="w-24 h-0.5 bg-[#CC0000]"></div>
-        <p className="font-heading font-bold text-xl sm:text-2xl tracking-[0.25em] text-white uppercase">
-            Importatori Esclusivi per l'Italia
-        </p>
-        <p className="max-w-3xl mx-auto text-lg text-[#8A8A8A]">
-            Lubrificanti sintetici premium per ogni applicazione: <br/>
-            Automotive American | European | V-Twin | Dirt Bike
-        </p>
-    </div>
-</div>
+                <div className="fade-up mt-20 bg-[#111111] border-2 border-dashed border-[#CC0000] p-10 rounded-lg text-center" style={{ transitionDelay: '500ms'}}>
+                    <div className="flex flex-col items-center gap-5">
+                        <img
+                            src="/amsoil-logo.png"
+                            alt="AMSOIL"
+                            className="h-16 sm:h-20 w-auto object-contain"
+                            draggable={false}
+                        />
+                        <div className="w-24 h-0.5 bg-[#CC0000]"></div>
+                        <p className="font-heading font-bold text-xl sm:text-2xl tracking-[0.25em] text-white uppercase">
+                            Importatori Esclusivi per l'Italia
+                        </p>
+                        <p className="max-w-3xl mx-auto text-lg text-[#8A8A8A]">
+                            Lubrificanti sintetici premium per ogni applicazione: <br/>
+                            Automotive American | European | V-Twin | Dirt Bike
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     );

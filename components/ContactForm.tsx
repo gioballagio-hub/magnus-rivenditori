@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 type FormState = {
     name: string;
@@ -10,10 +10,11 @@ type FormState = {
     vehicles: string[];
     source: string;
     message: string;
+    honeypot: string; // Honeypot field
 };
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
-type Errors = Partial<Record<keyof FormState, string>>;
+type Errors = Partial<Record<keyof Omit<FormState, 'honeypot'>, string>>;
 
 const ContactForm: React.FC = () => {
     const [formData, setFormData] = useState<FormState>({
@@ -26,6 +27,7 @@ const ContactForm: React.FC = () => {
         vehicles: [],
         source: '',
         message: '',
+        honeypot: '',
     });
     const [status, setStatus] = useState<FormStatus>('idle');
     const [errors, setErrors] = useState<Errors>({});
@@ -56,16 +58,32 @@ const ContactForm: React.FC = () => {
         });
     };
 
+    const sanitize = (value: string): string => {
+        // Basic sanitization to remove script tags as a first line of defense
+        return value.replace(/<script.*?>.*?<\/script>/gi, '');
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        const sanitizedValue = name === 'message' ? sanitize(value) : value;
+        setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Honeypot check for bot prevention
+        if (formData.honeypot) {
+            console.log("Bot detected!");
+            return; 
+        }
+
         if (!validate()) return;
         
         setStatus('loading');
+        
+        const dataToSend = { ...formData, _subject: `Nuova richiesta B2B da: ${formData.company}` };
+        delete (dataToSend as any).honeypot;
         
         try {
             const response = await fetch("https://formspree.io/f/mreapvyj", {
@@ -74,7 +92,7 @@ const ContactForm: React.FC = () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(dataToSend)
             });
 
             if (response.ok) {
@@ -109,29 +127,43 @@ const ContactForm: React.FC = () => {
                     ) : status === 'error' ? (
                         <div className="fade-up text-center bg-[#1A1A1A] border-2 border-yellow-500 p-12 rounded-lg">
                             <h3 className="font-heading text-3xl text-white">Oops! Qualcosa è andato storto.</h3>
-                            <p className="mt-4 text-lg text-[#8A8A8A]">Non è stato possibile inviare la tua richiesta. Riprova più tardi o contattaci direttamente.</p>
+                            <p className="mt-4 text-lg text-[#8A8A8A]">Non è stato possibile inviare la tua richiesta. Riprova più tardi o contattaci direttamente via email.</p>
                              <button onClick={() => setStatus('idle')} className="mt-6 clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold py-3 px-8 text-md transition-all duration-300">
                                 Riprova
                             </button>
                         </div>
                      ) : (
                     <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+                        {/* Honeypot field for bot protection */}
+                        <div className="sr-only" aria-hidden="true">
+                            <label htmlFor="honeypot">Non compilare questo campo</label>
+                            <input
+                                id="honeypot"
+                                name="honeypot"
+                                type="text"
+                                value={formData.honeypot}
+                                onChange={handleChange}
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+                        </div>
+
                         {/* Form Fields */}
                         <div className="fade-up lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" style={{transitionDelay: '300ms'}}>
                             <div>
-                                <input type="text" name="name" placeholder="Nome e Cognome *" value={formData.name} onChange={handleChange} className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
+                                <input type="text" name="name" placeholder="Nome e Cognome *" value={formData.name} onChange={handleChange} required className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
                                 {errors.name && <p className="text-[#CC0000] text-sm mt-1">{errors.name}</p>}
                             </div>
                              <div>
-                                <input type="text" name="company" placeholder="Nome Azienda / Officina *" value={formData.company} onChange={handleChange} className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
+                                <input type="text" name="company" placeholder="Nome Azienda / Officina *" value={formData.company} onChange={handleChange} required className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
                                 {errors.company && <p className="text-[#CC0000] text-sm mt-1">{errors.company}</p>}
                             </div>
                             <div>
-                                <input type="email" name="email" placeholder="Email *" value={formData.email} onChange={handleChange} className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
+                                <input type="email" name="email" placeholder="Email *" value={formData.email} onChange={handleChange} required className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
                                 {errors.email && <p className="text-[#CC0000] text-sm mt-1">{errors.email}</p>}
                             </div>
                              <div>
-                                <input type="tel" name="phone" placeholder="Telefono *" value={formData.phone} onChange={handleChange} className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
+                                <input type="tel" name="phone" placeholder="Telefono *" value={formData.phone} onChange={handleChange} required className="w-full bg-[#1A1A1A] border-2 border-[#2A2A2A] focus:border-[#CC0000] focus:ring-0 rounded-md p-3 text-white transition" />
                                 {errors.phone && <p className="text-[#CC0000] text-sm mt-1">{errors.phone}</p>}
                             </div>
                             <div>
@@ -180,9 +212,6 @@ const ContactForm: React.FC = () => {
                             </button>
                             <p className="text-center text-sm text-[#8A8A8A] mt-4">
                                  🔒 I tuoi dati sono al sicuro. Non invieremo spam.
-                            </p>
-                             <p className="text-center text-sm text-[#8A8A8A] mt-1">
-                                📞 Preferisci chiamare? <a href="tel:0496711028" className="text-white hover:underline">049 6711028</a> — Lun-Ven 9-18
                             </p>
                         </div>
                     </form>

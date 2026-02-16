@@ -6,7 +6,6 @@ import ValueProposition from './components/ValueProposition';
 import MarketSegments from './components/MarketSegments';
 import BrandLogos from './components/BrandLogos';
 import ProductCategories from './components/ProductCategories';
-import SocialProof from './components/SocialProof';
 import HowItWorks from './components/HowItWorks';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
@@ -28,16 +27,17 @@ const App: React.FC = () => {
             { threshold: 0.15 }
         );
 
-        sectionsRef.current.forEach((section) => {
+        const currentSections = sectionsRef.current;
+        currentSections.forEach((section) => {
             if (section) {
-                section.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+                section.querySelectorAll('.fade-up').forEach(el => observer.observe(el as Element));
             }
         });
 
         return () => {
-            sectionsRef.current.forEach((section) => {
+            currentSections.forEach((section) => {
                 if (section) {
-                    section.querySelectorAll('.fade-up').forEach(el => observer.unobserve(el));
+                    section.querySelectorAll('.fade-up').forEach(el => observer.unobserve(el as Element));
                 }
             });
         };
@@ -60,7 +60,6 @@ const App: React.FC = () => {
                 <div ref={addToRefs}><MarketSegments /></div>
                 <div ref={addToRefs}><BrandLogos /></div>
                 <div ref={addToRefs}><ProductCategories /></div>
-                <div ref={addToRefs}><SocialProof /></div>
                 <div ref={addToRefs}><HowItWorks /></div>
                 <div ref={addToRefs}><ContactForm /></div>
             </main>

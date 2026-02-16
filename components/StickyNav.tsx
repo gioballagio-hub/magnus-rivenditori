@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MagnusLogo } from './icons/MagnusLogo';
 
 const StickyNav: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
+    const ticking = useRef(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 80);
+            if (!ticking.current) {
+                window.requestAnimationFrame(() => {
+                    setScrolled(window.scrollY > 80);
+                    ticking.current = false;
+                });
+                ticking.current = true;
+            }
         };
-        window.addEventListener('scroll', handleScroll);
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -20,9 +29,6 @@ const StickyNav: React.FC = () => {
                         <MagnusLogo className="h-8 sm:h-12 w-auto" />
                     </a>
                     <div className="flex items-center gap-4 sm:gap-6">
-                        <a href="tel:0496711028" className="text-sm font-semibold text-[#8A8A8A] hover:text-white transition-colors hidden md:block">
-                            Tel: 049 6711028
-                        </a>
                         <a href="#contact-form" className="clip-btn bg-[#CC0000] hover:bg-[#E8000A] text-white font-bold text-sm py-2.5 px-4 sm:px-6 transition-colors duration-300 whitespace-nowrap">
                             Diventa Rivenditore
                         </a>
