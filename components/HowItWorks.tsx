@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const HowItWorks: React.FC = () => {
@@ -36,28 +35,18 @@ const HowItWorks: React.FC = () => {
                 </div>
                 <div className="mt-20 relative">
                     {/* Desktop timeline line */}
-                    <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-[#2A2A2A] -translate-y-1/2">
-                        <div className="absolute top-0 left-0 h-full bg-[#CC0000] w-full origin-left scale-x-0 animate-line-draw" style={{ animation: 'line-draw 1s ease-out forwards', animationDelay: '0.5s' }}></div>
-                        <style>{`
-                          @keyframes line-draw {
-                            to { transform: scaleX(1); }
-                          }
-                          .animate-line-draw { animation-fill-mode: forwards; }
-                        `}</style>
-                    </div>
+                    <div className="hidden lg:block absolute top-6 left-0 w-full h-0.5 bg-[#CC0000] z-0"></div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 lg:gap-y-0 lg:gap-x-8">
                         {steps.map((step, index) => (
-                            <div key={index} className="fade-up text-center lg:text-left relative" style={{ transitionDelay: `${index * 200}ms` }}>
-                                <div className="flex items-center justify-center lg:justify-start gap-4">
-                                     <div className="w-12 h-12 flex items-center justify-center bg-[#CC0000] text-white font-bold text-xl rounded-full z-10">
+                            <div key={index} className="fade-up text-center relative" style={{ transitionDelay: `${index * 200}ms` }}>
+                                <div className="relative inline-block bg-[#111111] px-3 z-10">
+                                     <div className="w-12 h-12 flex items-center justify-center bg-[#CC0000] text-white font-bold text-xl rounded-full">
                                         {step.step}
                                     </div>
-                                    <h3 className="font-heading font-semibold text-2xl text-white">{step.title}</h3>
                                 </div>
-                                <div className="lg:pl-16 mt-4">
-                                     <p className="text-[#8A8A8A]">{step.description}</p>
-                                </div>
+                                <h3 className="font-heading font-semibold text-2xl text-white mt-4">{step.title}</h3>
+                                <p className="text-[#8A8A8A] mt-3">{step.description}</p>
                             </div>
                         ))}
                     </div>
@@ -68,4 +57,3 @@ const HowItWorks: React.FC = () => {
 };
 
 export default HowItWorks;
-    

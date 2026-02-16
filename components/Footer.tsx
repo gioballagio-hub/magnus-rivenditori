@@ -8,9 +8,8 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {/* Colonna 1: Logo & Info */}
                     <div className="lg:col-span-2">
-                        <a href="#" className="flex items-center gap-3">
-                            <MagnusLogo className="h-10 w-auto text-white" />
-                            <span className="font-display font-bold text-2xl tracking-wider text-white">MAGNUS SRL</span>
+                        <a href="#" className="flex items-center">
+                            <MagnusLogo className="h-10 w-auto" />
                         </a>
                         <p className="mt-4 max-w-sm">Importatore Ufficiale AMSOIL. Ricambi, accessori e lubrificanti per auto americane.</p>
                         <div className="flex gap-4 mt-4">
